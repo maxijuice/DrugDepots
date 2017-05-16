@@ -1,0 +1,37 @@
+﻿@model Depots.WebUI.Models.DrugUnitsListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Pick Order</th>
+            <th>Depot</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var drugUnit in Model.DrugUnits)
+        {
+            <tr>
+                <td>@drugUnit.DrugType.DrugTypeName</td>
+                <td>@drugUnit.PickNumber</td>
+                <td>
+                    @using (Html.BeginForm("AssingDrugUnitToDepot", "DrugUnits", FormMethod.Post))
+                    {
+                        @Html.Hidden("drugUnitId", drugUnit.DrugUnitId)
+                        @Html.DropDownList("DepotId", new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.Depot), "No associated depots")
+                        <input class="btn btn-default" type="submit" value="Assign to depot"/>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
+
