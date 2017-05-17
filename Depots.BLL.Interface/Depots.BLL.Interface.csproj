@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,9 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\CountryDto.cs" />
+    <Compile Include="DTO\DepotDto.cs" />
+    <Compile Include="DTO\DrugTypeDTO.cs" />
+    <Compile Include="DTO\DrugUnitDTO.cs" />
+    <Compile Include="Mapper\ServicesProfile.cs" />
     <Compile Include="Services\IDepotService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IDrugUnitService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Depots.BLL.Concrete\Depots.BLL.Concrete.csproj">
+      <Project>{30F2C4BA-0C18-4075-B340-B509235CED5D}</Project>
+      <Name>Depots.BLL.Concrete</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Depots.ORM\Depots.ORM.csproj">
+      <Project>{53218D9A-F7A4-467B-B08C-EA3EE3583795}</Project>
+      <Name>Depots.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
