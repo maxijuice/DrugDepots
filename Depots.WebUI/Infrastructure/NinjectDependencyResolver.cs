@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Depots.DAL.Concrete.Repositories;
-using Depots.DAL.Interface.Repository;
+using Depots.DAL.Interface.Repositories;
 using Depots.ORM.Context;
 using Ninject;
 using Ninject.Web.Common;

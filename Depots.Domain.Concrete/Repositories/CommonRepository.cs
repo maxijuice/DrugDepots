@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Depots.DAL.Interface;
-using Depots.DAL.Interface.Repository;
+using Depots.DAL.Interface.Repositories;
 
 namespace Depots.DAL.Concrete.Repositories
 {

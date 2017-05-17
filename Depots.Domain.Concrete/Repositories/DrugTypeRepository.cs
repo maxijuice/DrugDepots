@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Depots.DAL.Interface.Repository;
+using Depots.DAL.Interface.Repositories;
 using Depots.ORM.Entities;
 
 namespace Depots.DAL.Concrete.Repositories

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Depots.DAL.Interface.Repository
+namespace Depots.DAL.Interface.Repositories
 {
     public interface IRepository<T>
     {

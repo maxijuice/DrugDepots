@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{38A96876-E6B3-432B-A03C-57A7F1355BD5}</ProjectGuid>
+    <ProjectGuid>{B9A16F44-BD62-4DBB-A9CE-48864AE24D2B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Depots.DAL.Interface</RootNamespace>
-    <AssemblyName>Depots.DAL.Interface</AssemblyName>
+    <RootNamespace>Depots.Tests</RootNamespace>
+    <AssemblyName>Depots.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,21 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitOfWork\IDepotsUnitOfWork.cs" />
-    <Compile Include="UnitOfWork\IRepositoryFactory.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
-    <Compile Include="Repositories\ICountryRepository.cs" />
-    <Compile Include="Repositories\IDepotRepository.cs" />
-    <Compile Include="Repositories\IDrugTypeRepository.cs" />
-    <Compile Include="Repositories\IDrugUnitRepository.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="ControllersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Depots.ORM\Depots.ORM.csproj">
-      <Project>{53218D9A-F7A4-467B-B08C-EA3EE3583795}</Project>
-      <Name>Depots.ORM</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

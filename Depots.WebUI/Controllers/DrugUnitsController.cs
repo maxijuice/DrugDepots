@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Depots.DAL.Interface.Repository;
+using Depots.DAL.Interface.Repositories;
 using Depots.ORM.Entities;
 using Depots.WebUI.Models;
 

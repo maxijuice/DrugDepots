@@ -63,6 +63,7 @@
     <Compile Include="Repositories\DrugUnitRepository.cs" />
     <Compile Include="Repositories\CommonRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork\DepotsUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Depots.Domain.Interface\Depots.DAL.Interface.csproj">
