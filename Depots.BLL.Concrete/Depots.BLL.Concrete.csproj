@@ -49,6 +49,14 @@
     <Compile Include="Services\DrugUnitService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Depots.BLL.Interface\Depots.BLL.Interface.csproj">
+      <Project>{a5ad4d2e-1f6d-4af7-9794-de176e22e839}</Project>
+      <Name>Depots.BLL.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Depots.Domain.Interface\Depots.DAL.Interface.csproj">
+      <Project>{38A96876-E6B3-432B-A03C-57A7F1355BD5}</Project>
+      <Name>Depots.DAL.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Depots.ORM\Depots.ORM.csproj">
       <Project>{53218D9A-F7A4-467B-B08C-EA3EE3583795}</Project>
       <Name>Depots.ORM</Name>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Depots.BLL.Interface.Mapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,7 @@ namespace Depots.WebUI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-
+            AutoMapper.Mapper.Initialize(cfg => cfg.AddProfile<ServicesProfile>());
         }
     }
 }

@@ -16,15 +16,10 @@
         @foreach (var drugUnit in Model.DrugUnits)
         {
             <tr>
-                <td>@drugUnit.DrugType.DrugTypeName</td>
+                <td>@drugUnit.DrugTypeId</td>
                 <td>@drugUnit.PickNumber</td>
                 <td>
-                    @using (Html.BeginForm("AssingDrugUnitToDepot", "DrugUnits", FormMethod.Post))
-                    {
-                        @Html.Hidden("drugUnitId", drugUnit.DrugUnitId)
-                        @Html.DropDownList("DepotId", new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.Depot), "No associated depots")
-                        <input class="btn btn-default" type="submit" value="Assign to depot"/>
-                    }
+                    @Html.DropDownList("DepotId", new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.DepotId), "No associated depots")   
                 </td>
             </tr>
         }

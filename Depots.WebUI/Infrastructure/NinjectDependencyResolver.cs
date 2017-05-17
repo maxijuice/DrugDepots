@@ -4,11 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Depots.BLL.Interface.Services;
 using Depots.DAL.Concrete.Repositories;
 using Depots.DAL.Interface.Repositories;
 using Depots.ORM.Context;
 using Ninject;
 using Ninject.Web.Common;
+using Depots.BLL.Concrete.Services;
+using Depots.DAL.Concrete.UnitOfWork;
+using Depots.DAL.Interface.UnitOfWork;
 
 namespace Depots.WebUI.Infrastructure
 {
@@ -39,6 +43,9 @@ namespace Depots.WebUI.Infrastructure
             kernel.Bind<IDrugTypeRepository>().To<DrugTypeRepository>().InRequestScope();
             kernel.Bind<IDrugUnitRepository>().To<DrugUnitRepository>().InRequestScope();
             kernel.Bind<ICountryRepository>().To<CountryRepository>().InRequestScope();
+            kernel.Bind<IDepotsUnitOfWork>().To<DepotsUnitOfWork>().InRequestScope();
+            kernel.Bind<IDepotService>().To<DepotService>().InRequestScope();
+            kernel.Bind<IDrugUnitService>().To<DrugUnitService>().InRequestScope();
         }
     }
 }

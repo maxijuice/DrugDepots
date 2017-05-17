@@ -54,10 +54,6 @@
     <Compile Include="Services\IDrugUnitService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Depots.BLL.Concrete\Depots.BLL.Concrete.csproj">
-      <Project>{30F2C4BA-0C18-4075-B340-B509235CED5D}</Project>
-      <Name>Depots.BLL.Concrete</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Depots.ORM\Depots.ORM.csproj">
       <Project>{53218D9A-F7A4-467B-B08C-EA3EE3583795}</Project>
       <Name>Depots.ORM</Name>

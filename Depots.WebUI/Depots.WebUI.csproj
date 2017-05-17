@@ -237,6 +237,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Depots.BLL.Concrete\Depots.BLL.Concrete.csproj">
+      <Project>{30F2C4BA-0C18-4075-B340-B509235CED5D}</Project>
+      <Name>Depots.BLL.Concrete</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Depots.BLL.Interface\Depots.BLL.Interface.csproj">
+      <Project>{A5AD4D2E-1F6D-4AF7-9794-DE176E22E839}</Project>
+      <Name>Depots.BLL.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Depots.Domain.Concrete\Depots.DAL.Concrete.csproj">
       <Project>{41B4B80E-B127-4AAC-92F9-56497FD6AFC1}</Project>
       <Name>Depots.DAL.Concrete</Name>
