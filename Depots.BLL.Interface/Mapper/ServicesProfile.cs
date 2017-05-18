@@ -12,6 +12,11 @@ namespace Depots.BLL.Interface.Mapper
             CreateMap<DrugType, DrugTypeDTO>();
             CreateMap<DrugUnit, DrugUnitDTO>();
             CreateMap<Depot, DepotDTO>();
+
+            CreateMap<DepotDTO, Depot>();
+            CreateMap<CountryDTO, Country>();
+            CreateMap<DrugUnitDTO, DrugUnit>();
+            CreateMap<DrugTypeDTO, DrugType>();
         }
     }
 }

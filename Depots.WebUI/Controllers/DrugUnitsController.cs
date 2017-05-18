@@ -14,7 +14,7 @@ namespace Depots.WebUI.Controllers
     {
         private readonly IDrugUnitService drugUnits;
         private readonly IDepotService depots;
-        public int PageSize = 5;
+        public int PageSize = 10;
 
         public DrugUnitsController(IDrugUnitService drugUnitService, IDepotService depotService)
         {
@@ -33,7 +33,7 @@ namespace Depots.WebUI.Controllers
                     ItemsPerPage = PageSize,
                     TotalItems = drugUnits.CountUnits
                 },
-                ExistingDepots = depots.GetAllDepots()
+                ExistingDepots = depots.GetAll()
             };
 
             return View(model);

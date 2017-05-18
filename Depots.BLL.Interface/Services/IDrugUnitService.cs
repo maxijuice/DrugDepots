@@ -7,9 +7,10 @@ using Depots.BLL.Interface.DTO;
 
 namespace Depots.BLL.Interface.Services
 {
-    public interface IDrugUnitService
-    {
-        IEnumerable<DrugUnitDTO> GetAllDrugUnits();
+    public interface IDrugUnitService : IService<DrugUnitDTO>
+    { 
+        IEnumerable<DrugUnitDTO> GetByDepot(int? depotId); 
+        void UpdateUnit(DrugUnitDTO unitToUpdate);
         int CountUnits { get; }
         IEnumerable<DrugUnitDTO> GetPage(int pageNumber, int pageSize);
     }

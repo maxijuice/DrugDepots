@@ -3,8 +3,8 @@ using Depots.BLL.Interface.DTO;
 
 namespace Depots.BLL.Interface.Services
 {
-    public interface IDepotService
+    public interface IDepotService : IService<DepotDTO>
     {
-        IEnumerable<DepotDTO> GetAllDepots();
+        IEnumerable<DepotDTO> GetByCountry(int? countryId);
     }
 }

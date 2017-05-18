@@ -9,17 +9,18 @@ namespace Depots.DAL.Concrete.Repositories
 {
     public class CommonRepository<T> : IRepository<T> where T : class
     {
-        private readonly DbSet<T> set;
-        private readonly DbContext context;
+        protected readonly DbSet<T> set;
+        protected readonly DbContext context;
 
         public CommonRepository(DbContext context)
         {
             this.context = context;
             set = context.Set<T>();
         } 
+
         public virtual IQueryable<T> GetAll()
         {
-            return set.AsQueryable();
+            return set;
         }
 
         public virtual T GetById(string id)
@@ -31,21 +32,18 @@ namespace Depots.DAL.Concrete.Repositories
         {
             DbEntityEntry entityEntry = context.Entry(entity);
             entityEntry.State = EntityState.Added;
-            context.SaveChanges();
         }
 
         public virtual void Delete(T entity)
         {
             DbEntityEntry entityEntry = context.Entry(entity);
             entityEntry.State = EntityState.Deleted;
-            context.SaveChanges();
         }
 
         public virtual void Update(T entity)
         {
             DbEntityEntry entityEntry = context.Entry(entity);
             entityEntry.State = EntityState.Modified;
-            context.SaveChanges();
         }
     }
 }
