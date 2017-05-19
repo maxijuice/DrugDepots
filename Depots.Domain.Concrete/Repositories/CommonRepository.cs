@@ -23,7 +23,7 @@ namespace Depots.DAL.Concrete.Repositories
             return set;
         }
 
-        public virtual T GetById(string id)
+        public virtual T GetById(dynamic id)
         {
             return set.Find(id);
         }
@@ -42,8 +42,8 @@ namespace Depots.DAL.Concrete.Repositories
 
         public virtual void Update(T entity)
         {
-            DbEntityEntry entityEntry = context.Entry(entity);
-            entityEntry.State = EntityState.Modified;
+            set.Attach(entity);
+            context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

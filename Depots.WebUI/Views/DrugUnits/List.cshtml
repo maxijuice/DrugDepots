@@ -7,6 +7,7 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
+            <th>#</th>
             <th>Type</th>
             <th>Pick Order</th>
             <th>Depot</th>
@@ -16,10 +17,16 @@
         @foreach (var drugUnit in Model.DrugUnits)
         {
             <tr>
-                <td>@drugUnit.DrugTypeId</td>
+                <td>@drugUnit.DrugUnitId</td>
+                <td>@drugUnit.DrugType.DrugTypeName</td>
                 <td>@drugUnit.PickNumber</td>
                 <td>
-                    @Html.DropDownList("DepotId", new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.DepotId), "No associated depots")   
+                    @using (Html.BeginForm("AssociateUnitToDepot", "DrugUnits", new { page = Model.PagingInfo.CurrentPage }))
+                    {
+                        @Html.Hidden("DrugUnitId", drugUnit.DrugUnitId)
+                        @Html.DropDownList("DepotId", new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.Depot?.DepotId), "No depot assigned");
+                        <input type="submit" value="Assign to selected depot"/>
+                    }
                 </td>
             </tr>
         }

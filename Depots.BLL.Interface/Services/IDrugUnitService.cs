@@ -8,7 +8,8 @@ using Depots.BLL.Interface.DTO;
 namespace Depots.BLL.Interface.Services
 {
     public interface IDrugUnitService : IService<DrugUnitDTO>
-    { 
+    {
+        DrugUnitDTO GetById(string id);
         IEnumerable<DrugUnitDTO> GetByDepot(int? depotId); 
         void UpdateUnit(DrugUnitDTO unitToUpdate);
         int CountUnits { get; }

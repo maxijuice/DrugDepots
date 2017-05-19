@@ -4,6 +4,6 @@
     {
         public int DepotId { get; set; }
         public string DepotName { get; set; }
-        public int? CountryId { get; set; }
+        public CountryDTO Country { get; set; }
     }
 }
