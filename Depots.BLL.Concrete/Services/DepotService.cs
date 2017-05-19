@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Depots.BLL.Interface.DTO;
 using Depots.BLL.Interface.Mapper;
@@ -51,6 +52,30 @@ namespace Depots.BLL.Concrete.Services
             return depotsOfCountry;
         }
 
+        public IEnumerable<DepotDTO> GetPage(int pageNumber, int pageSize)
+        {
+            IEnumerable<DepotDTO> depotsPerPage = depots.GetAll().OrderBy(depot => depot.DepotId).ThenBy(depot => depot.CountryId)
+                .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+                .Select(depot => depot.ToDTO()).ToList();
+
+            foreach (var depot in depotsPerPage)
+            {
+               AddCountryToDepot(depot);
+            }
+
+            return depotsPerPage;
+        }
+
+        public int Count => depots.GetAll().Count();
+
+        DepotDTO IService<DepotDTO>.GetById(dynamic id)
+        {
+            if (id.GetType() != typeof(Int32))
+                throw new ArgumentException(nameof(id));
+
+            return GetById(id);
+        }
+  
         private void AddCountryToDepot(DepotDTO depotToFill)
         {
             if (depotToFill.Country != null)

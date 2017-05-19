@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Depots.BLL.Interface.Services
 {
-    public interface IService<T> where T : class
+    public interface IPageable<T>
     {
-        IEnumerable<T> GetAll();
-        T GetById(dynamic id);
+        IEnumerable<T> GetPage(int pageNumber, int pageSize);
+        int Count { get; }
     }
 }

@@ -181,6 +181,8 @@
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\DepotsListViewModel.cs" />
+    <Compile Include="Models\DepotViewModel.cs" />
     <Compile Include="Models\DrugUnitsListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,7 +227,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\DrugUnits\List.cshtml" />
-    <Content Include="Views\Depots\Index.cshtml" />
+    <Content Include="Views\Depots\List.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

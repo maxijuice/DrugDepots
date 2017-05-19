@@ -32,7 +32,7 @@ namespace Depots.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = drugUnits.CountUnits
+                    TotalItems = drugUnits.Count
                 },
                 ExistingDepots = depots.GetAll()
             };

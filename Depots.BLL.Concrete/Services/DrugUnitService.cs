@@ -46,7 +46,17 @@ namespace Depots.BLL.Concrete.Services
 
         public IEnumerable<DrugUnitDTO> GetByDepot(int? depotId)
         {
-            throw new NotImplementedException();
+            DepotDTO depot = unitOfWork.Depots.GetById(depotId).ToDTO();
+            IEnumerable<DrugUnitDTO> unitsOfDepot = drugUnits.GetAll().Where(unit => unit.DepotId == depotId).ToList()
+                .Select(unit => unit.ToDTO()).ToList();
+            
+            foreach (var unit in unitsOfDepot)
+            {
+                AddDrugTypeToUnit(unit);
+                unit.Depot = depot;
+            }
+
+            return unitsOfDepot;
         }
 
         public void UpdateUnit(DrugUnitDTO unitToUpdate)
@@ -55,7 +65,7 @@ namespace Depots.BLL.Concrete.Services
             unitOfWork.Commit();
         }
 
-        public int CountUnits => drugUnits.GetAll().Count();
+        public int Count => drugUnits.GetAll().Count();
 
         public IEnumerable<DrugUnitDTO> GetPage(int pageNumber, int pageSize)
         {
@@ -70,6 +80,11 @@ namespace Depots.BLL.Concrete.Services
             }
 
             return unitsPerPage;
+        }
+
+        DrugUnitDTO IService<DrugUnitDTO>.GetById(dynamic id)
+        {
+            return GetById(id.ToString());
         }
 
         private void AddDrugTypeToUnit(DrugUnitDTO unit)
