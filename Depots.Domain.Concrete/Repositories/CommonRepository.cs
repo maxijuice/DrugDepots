@@ -4,10 +4,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Depots.DAL.Interface;
 using Depots.DAL.Interface.Repositories;
+using Depots.ORM.EntityInterfaces;
 
 namespace Depots.DAL.Concrete.Repositories
 {
-    public class CommonRepository<T> : IRepository<T> where T : class
+    public class CommonRepository<T> : IRepository<T> where T : class, IUnique
     {
         protected readonly DbSet<T> set;
         protected readonly DbContext context;
@@ -36,14 +37,16 @@ namespace Depots.DAL.Concrete.Repositories
 
         public virtual void Delete(T entity)
         {
-            DbEntityEntry entityEntry = context.Entry(entity);
+            T entityToDelete = set.Find(entity.EntityID);
+            DbEntityEntry entityEntry = context.Entry(entityToDelete);
             entityEntry.State = EntityState.Deleted;
         }
 
         public virtual void Update(T entity)
         {
-            set.Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
+            T entityToUpdate = set.Find(entity.EntityID);
+            DbEntityEntry entityEntry = context.Entry(entityToUpdate);
+            entityEntry?.CurrentValues.SetValues(entity);
         }
     }
 }

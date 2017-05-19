@@ -1,14 +1,113 @@
-﻿body {
+﻿* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
     padding-top: 50px;
-    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    min-height: 100%;
     padding-left: 15px;
     padding-right: 15px;
+    margin-bottom: -150px;
 }
 
+.body-content:after {
+  content: "";
+  display: block;
+}
+
+.header {
+    padding: 20px;
+    background-color: #688e89;
+    color: aliceblue;
+}
+
+.header > h1 {
+    font-family: Raleway, Verdana, sans-serif;
+}
+
+.store-nav {
+    background-color: #81afa9;
+    border-top: 5px solid #38504d;
+}
+
+.menu {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.menu > li {
+    display: inline-block;
+}
+
+.menu > li > a {
+    display: inline-block;
+    padding: 20px 20px 15px 20px;
+    border-bottom: 5px solid #81afa9;
+    color: #f0f8ff;
+    font-family: Raleway, sans-serif;
+}
+
+.menu > li > a:hover {
+    text-decoration: none;
+    border-bottom-color: #38504d;
+}
+
+.menu .selected {
+   background-color: #38504d;
+   border-bottom-color: #38504d;
+}
+
+.site-footer, .body-content:after {
+    height: 150px;
+}
+
+.site-footer {
+    padding: 20px;
+    background-color: #ededed;
+    color: #000000;
+}
+
+.pager {
+    display: inline-block;
+    border: 1px solid #38504d;
+}
+
+.pager > a {
+    padding: 5px 10px;
+    display: inline-block;
+    font-family: Raleway, sans-serif;
+    color: #38504d;
+}
+
+.pager > a + a {
+    border-left: 1px solid #38504d;
+}
+
+.pager > a:hover {
+   background-color: #81afa9;
+   color: white; 
+}
+
+.pager .selected {
+    background-color: #38504d;
+    color: white;
+}
+
+.page-header {
+    font-family: Raleway, sans-serif;
+}
+
+.brand-text {
+    text-align: center;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

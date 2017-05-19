@@ -1,9 +1,11 @@
-﻿@model Depots.WebUI.Models.DrugUnitsListViewModel
+﻿@using System.Data.Entity.Core.Metadata.Edm
+@model Depots.WebUI.Models.DrugUnitsListViewModel
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Drug Units In Stock";
 }
 
+<h2 class="page-header">Drug Units <small>In Stock</small></h2>
 <table class="table table-striped table-hover">
     <thead>
         <tr>

@@ -173,10 +173,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DepotsController.cs" />
     <Compile Include="Controllers\DrugUnitsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\DrugUnitsListViewModel.cs" />
@@ -223,6 +225,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\DrugUnits\List.cshtml" />
+    <Content Include="Views\Depots\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -51,11 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\EntitiesPartial\CountryPartial.cs" />
+    <Compile Include="Entities\EntitiesPartial\DepotPartial.cs" />
+    <Compile Include="Entities\EntitiesPartial\DrugTypePartial.cs" />
+    <Compile Include="Entities\EntitiesPartial\DrugUnitPartial.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\Depot.cs" />
     <Compile Include="Context\DepotsContext.cs" />
     <Compile Include="Entities\DrugType.cs" />
     <Compile Include="Entities\DrugUnit.cs" />
+    <Compile Include="EntityInterfaces\IUnique.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,18 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
 <div class="container body-content">
-    @RenderBody()
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Depots All Over The World</p>
-    </footer>
+    <header class="header">
+        <h1>Drug Stores</h1>
+    </header>
+    <nav class="store-nav">
+        <ul class="menu">
+            <li>@Html.MenuLink("Units", "List", "DrugUnits")</li>
+            <li>@Html.MenuLink("Depots", "Index", "Depots")</li>
+            <li>@Html.MenuLink("Order drugs", "Index", "Depots")</li>
+        </ul>
+    </nav>
+    <div class="page-content">
+        @RenderBody()
+    </div> 
 </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<footer class="site-footer">
+    <p class="brand-text">&copy; @DateTime.Now.Year - Depots All Over The World</p>
+</footer>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>
