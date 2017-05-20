@@ -6,6 +6,5 @@
         public int PickNumber { get; set; }
         public DrugTypeDTO DrugType { get; set; }
         public DepotDTO Depot { get; set; }
-
     }
 }

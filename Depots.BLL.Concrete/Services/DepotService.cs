@@ -20,6 +20,8 @@ namespace Depots.BLL.Concrete.Services
             depots = uow.Depots;
         }
 
+        public int Count => depots.GetAll().Count();
+
         public IEnumerable<DepotDTO> GetAll()
         {
             IEnumerable<DepotDTO> allDepots = depots.GetAll().ToList().Select(depot => depot.ToDTO()).ToList();
@@ -66,19 +68,17 @@ namespace Depots.BLL.Concrete.Services
             return depotsPerPage;
         }
 
-        public int Count => depots.GetAll().Count();
-
         DepotDTO IService<DepotDTO>.GetById(dynamic id)
         {
-            if (id.GetType() != typeof(Int32))
-                throw new ArgumentException(nameof(id));
+            if (id?.GetType() != typeof (int))
+                return null;
 
             return GetById(id);
         }
   
         private void AddCountryToDepot(DepotDTO depotToFill)
         {
-            if (depotToFill.Country != null)
+            if (depotToFill?.Country != null)
             {
                 CountryDTO country = unitOfWork.Countries.GetById(depotToFill.Country.CountryId).ToDTO();
                 country.SupplyingDepot = depotToFill;

@@ -151,6 +151,20 @@ body {
 .brand-text {
     text-align: center;
 }
+
+.label-max {
+    padding: 8px 20px;
+    background-color: #688e89;
+    color: #f0f8ff;
+    border-radius: 3px;
+}
+
+.no-units-message {
+    padding: 20px 30px;
+    background-color: #b51616;
+    color: #f0f8ff;
+}
+
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -158,9 +172,6 @@ body {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+tbody > tr > td {
+    vertical-align: middle !important;
 }

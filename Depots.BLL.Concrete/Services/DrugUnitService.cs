@@ -46,7 +46,7 @@ namespace Depots.BLL.Concrete.Services
 
         public IEnumerable<DrugUnitDTO> GetByDepot(int? depotId)
         {
-            DepotDTO depot = unitOfWork.Depots.GetById(depotId).ToDTO();
+            DepotDTO depot = unitOfWork.Depots.GetById(depotId)?.ToDTO();
             IEnumerable<DrugUnitDTO> unitsOfDepot = drugUnits.GetAll().Where(unit => unit.DepotId == depotId).ToList()
                 .Select(unit => unit.ToDTO()).ToList();
             

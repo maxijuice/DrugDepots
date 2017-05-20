@@ -1,5 +1,4 @@
-﻿@using System.Data.Entity.Core.Metadata.Edm
-@model Depots.WebUI.Models.DrugUnitsListViewModel
+﻿@model Depots.WebUI.Models.DrugUnitsListViewModel
 
 @{
     ViewBag.Title = "Drug Units In Stock";
@@ -26,7 +25,9 @@
                     @using (Html.BeginForm("AssociateUnitToDepot", "DrugUnits", new { page = Model.PagingInfo.CurrentPage }))
                     {
                         @Html.Hidden("DrugUnitId", drugUnit.DrugUnitId)
-                        @Html.DropDownList("DepotId", new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.Depot?.DepotId), "No depot assigned");
+                        @Html.DropDownList("DepotId",
+                           new SelectList(Model.ExistingDepots, "DepotId", "DepotName", drugUnit.Depot?.DepotId),
+                           "No depot assigned");
                         <input type="submit" value="Assign to selected depot"/>
                     }
                 </td>
