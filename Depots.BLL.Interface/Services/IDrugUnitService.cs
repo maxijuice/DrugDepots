@@ -11,5 +11,6 @@ namespace Depots.BLL.Interface.Services
     {
         IEnumerable<DrugUnitDTO> GetByDepot(int? depotId); 
         void UpdateUnit(DrugUnitDTO unitToUpdate);
+        IEnumerable<DrugUnitDTO> Purchase(int depotId, int drugTypeId, int amount);
     }
 }

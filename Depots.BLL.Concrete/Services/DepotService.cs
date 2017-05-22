@@ -35,7 +35,7 @@ namespace Depots.BLL.Concrete.Services
 
         public DepotDTO GetById(int id)
         {
-            var depot = depots.GetById(id).ToDTO();
+            var depot = depots.GetById(id)?.ToDTO();
             AddCountryToDepot(depot);
 
             return depot;

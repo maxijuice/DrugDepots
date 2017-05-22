@@ -82,6 +82,20 @@ namespace Depots.BLL.Concrete.Services
             return unitsPerPage;
         }
 
+        public IEnumerable<DrugUnitDTO> Purchase(int depotId, int drugTypeId, int amount)
+        {
+            IEnumerable<DrugUnitDTO> unitsToSell =
+                drugUnits.GetAll().Where(unit => unit.DepotId == depotId && unit.DrugTypeId == drugTypeId)
+                    .OrderBy(unit => unit.PickNumber).Take(amount).ToList().Select(unit => unit.ToDTO()).ToList();
+
+            foreach (var unit in unitsToSell)
+            {
+                AddDrugTypeToUnit(unit);
+            }
+
+            return unitsToSell;
+        }
+
         DrugUnitDTO IService<DrugUnitDTO>.GetById(dynamic id)
         {
             return GetById(id.ToString());

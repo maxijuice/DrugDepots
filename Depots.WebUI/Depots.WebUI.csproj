@@ -100,6 +100,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\DepotsListViewModel.cs" />
     <Compile Include="Models\DepotViewModel.cs" />
     <Compile Include="Models\DrugUnitsListViewModel.cs" />
+    <Compile Include="Models\OrderSummaryViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,7 +216,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\ProperScripts\MakeOrder.js" />
+    <Content Include="Scripts\ProperScripts\make-order.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -232,6 +234,7 @@
     <Content Include="Views\DrugUnits\List.cshtml" />
     <Content Include="Views\Depots\List.cshtml" />
     <Content Include="Views\Order\MakeOrder.cshtml" />
+    <Content Include="Views\Order\OrderSummary.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

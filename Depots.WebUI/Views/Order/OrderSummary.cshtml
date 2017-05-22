@@ -1,0 +1,28 @@
+﻿@model Depots.WebUI.Models.OrderSummaryViewModel
+
+@{
+    ViewBag.Title = "Order Total";
+}
+
+<h2 class="page-header">Order Summary <small>Detailed list</small>
+</h2>
+
+<div class="order-summary">
+    @if (Model.UnitsToSend.Any())
+    {
+        <p class="list-header">Depot</p>
+        <p class="list-details">@Model.DepotSummary</p>
+        <p class="list-header">Units for shipping</p>
+        foreach (var unit in Model.UnitsToSend)
+         {
+             <p class="list-details">@Model.UnitSummary(unit)</p>
+        }
+    }
+    else
+    {
+        <p class="list-header">You haven't ordered any drugs</p>
+    }
+
+</div>
+
+

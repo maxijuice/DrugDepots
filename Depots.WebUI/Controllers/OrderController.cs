@@ -7,6 +7,7 @@ using Depots.BLL.Interface.DTO;
 using Depots.BLL.Interface.Services;
 using Depots.DAL.Interface.Repositories;
 using Depots.WebUI.Models;
+using WebGrease.Css.Extensions;
 
 namespace Depots.WebUI.Controllers
 {
@@ -36,7 +37,22 @@ namespace Depots.WebUI.Controllers
         [HttpPost]
         public ActionResult MakeOrder(OrderViewModel order)
         {
-            return new EmptyResult();
+            DepotDTO depot = depots.GetById(order.DepotId);
+            if (depots.GetById(order.DepotId) == null)
+                return RedirectToAction("MakeOrder");
+
+            IEnumerable<DrugUnitDTO> unitsToSend = new List<DrugUnitDTO>();
+            order.Lines.ForEach(line =>
+            {
+                if (line.Amount > 0)
+                    unitsToSend = unitsToSend.Concat(drugUnits.Purchase(order.DepotId, line.DrugTypeId, line.Amount));
+            });
+
+            return View("OrderSummary", new OrderSummaryViewModel()
+            {
+                Depot = depot,
+                UnitsToSend = unitsToSend
+            });
         }
 
         public JsonResult GetDepotDrugTypes(int? depotId)

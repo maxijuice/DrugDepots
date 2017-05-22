@@ -1,8 +1,17 @@
 ﻿$(document).ready(function () {
-    $("#DepotId").on("change", function() {
+    $(".submit-order").attr("disabled", true);
+
+    $("#DepotId").on("change", function () {
+        if (!this.value) {
+            $(".order-depot-units").hide();
+            $(".no-units-message").hide();
+            $(".submit-order").attr("disabled", true);
+            return;
+        }
+
         $.ajax({
             type: "GET",
-            url: $("#GetDepotDrugTypesUrl").val(),
+            url: $("#DepotDrugTypesUrl").val(),
             data: { depotId: $("#DepotId").val() },
             contentType: "application/json",
             traditional: true,
@@ -11,14 +20,20 @@
     });
 });
 
+var propertyName = "Lines";
+function indexer(index) {
+    return propertyName + "[" + index + "].";
+}
 
 function displayDrugTypes(drugTypes) {
     if (drugTypes.length > 0) {
         $(".no-units-message").hide();
-        $("#depot-units").slideDown(500);
+        $(".order-depot-units").slideDown(500);
+        $(".submit-order").attr("disabled", false);
     } else {
         $(".no-units-message").slideDown(500);
-        $("#depot-units").hide();
+        $(".order-depot-units").hide();
+        $(".submit-order").attr("disabled", true);
     }
 
     var typesIDs = drugTypes.map(function (type) {
@@ -41,12 +56,12 @@ function displayDrugTypes(drugTypes) {
         return typesIDs.indexOf(value.DrugTypeId) === index;
     });
 
-    $("#depot-units tbody").empty();
-    uniqueTypes.forEach(function (drugType) {
+    $(".order-depot-units tbody").empty();
+    uniqueTypes.forEach(function (drugType, index) {
         var row = document.createElement("tr");
         var inputAmount = document.createElement("input");
         inputAmount.classList.add("form-control");
-        inputAmount.name = "Amount";
+        inputAmount.name = indexer(index) + "Amount";
         inputAmount.type = "number";
         inputAmount.min = 0;
         inputAmount.max = maxTypeUnits(drugType.DrugTypeId);
@@ -60,7 +75,7 @@ function displayDrugTypes(drugTypes) {
         formGroup.name = "OrderLine";
         var hiddenForId = document.createElement("input");
         hiddenForId.type = "hidden";
-        hiddenForId.name = "DrugTypeId";
+        hiddenForId.name = indexer(index) + "DrugTypeId";
         hiddenForId.value = drugType.DrugTypeId;
         formGroup.appendChild(hiddenForId);
         formGroup.appendChild(inputAmount);
@@ -73,6 +88,6 @@ function displayDrugTypes(drugTypes) {
         row.appendChild(inputCol);
         row.appendChild(maxCol);
 
-        $("#depot-units tbody").append(row);
+        $(".order-depot-units tbody").append(row);
     });
 }

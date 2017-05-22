@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace Depots.WebUI.Models
@@ -8,7 +10,7 @@ namespace Depots.WebUI.Models
     public class OrderViewModel
     {
         public int DepotId { get; set; }
-        IList<OrderLine> Lines { get; set; } 
+        public IList<OrderLine> Lines { get; set; } 
     }
 
     public class OrderLine
