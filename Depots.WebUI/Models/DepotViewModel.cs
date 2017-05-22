@@ -11,7 +11,7 @@ namespace Depots.WebUI.Models
 {
     public class DepotViewModel
     {
-        public const double UnitsRatio = 2.2;
+        public const double UnitsRatio = 1 / 2.2;
         public DepotDTO Depot { get; set; }
         public IEnumerable<DrugUnitDTO> DepotDrugUnits { get; set; }
         public int? CountUnits => DepotDrugUnits?.Count();
