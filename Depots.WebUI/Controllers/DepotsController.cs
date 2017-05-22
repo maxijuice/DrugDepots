@@ -22,6 +22,20 @@ namespace Depots.WebUI.Controllers
 
         public ActionResult List(int page = 1)
         {
+            DepotsListViewModel depotsPerPage = GetDepotsViewModel(page);
+
+            return View(depotsPerPage);
+        }
+
+        public ActionResult DepotsCapacity(int page = 1)
+        {
+            DepotsListViewModel depotsPerPage = GetDepotsViewModel(page);
+
+            return View(depotsPerPage);
+        }
+
+        private DepotsListViewModel GetDepotsViewModel(int page)
+        {
             IEnumerable<DepotViewModel> depotsPerPage = depots.GetPage(page, PageSize).Select(depot => new DepotViewModel()
             {
                 Depot = depot,
@@ -39,7 +53,7 @@ namespace Depots.WebUI.Controllers
                 }
             };
 
-            return View(model);
-        }
+            return model;
+        } 
     }
 }

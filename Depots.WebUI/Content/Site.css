@@ -139,6 +139,11 @@ body {
     color: #f0f8ff;
 }
 
+.depot-total.weight {
+    background-color: #f9a4a4;
+    color: #940a0a;
+}
+
 .depot-country {
     display: inline-block;
     float: right;

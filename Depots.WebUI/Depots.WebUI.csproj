@@ -235,6 +235,7 @@
     <Content Include="Views\Depots\List.cshtml" />
     <Content Include="Views\Order\MakeOrder.cshtml" />
     <Content Include="Views\Order\OrderSummary.cshtml" />
+    <Content Include="Views\Depots\DepotsCapacity.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

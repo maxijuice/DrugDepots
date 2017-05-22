@@ -1,0 +1,70 @@
+﻿@model Depots.WebUI.Models.DepotsListViewModel
+
+@{
+    ViewBag.Title = "Depots Capacity";
+}
+
+<h2 class="page-header">Depots Capacity<small>Don't go beyond limits</small></h2>
+
+<div class="depots-list">
+    @foreach (var depotView in Model.Depots)
+    {
+        <div class="depot">
+            <span class="depot-name">@depotView.Depot.DepotName</span>
+            <span class="depot-total">@depotView.CountUnits @(depotView.CountUnits != 1 ? "units" : "unit")</span>
+            <span class="depot-total weight">@depotView.Capacity kg</span>
+            <span class="depot-country">@depotView.Depot.Country.CountryName</span>
+            <div class="depot-units">
+                @if (depotView.DepotDrugUnits.Any())
+                {
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Drugs type</th>
+                                <th>Quantity</th>
+                                <th>Unit weight</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var type in depotView.DistinctDepotDrugTypes)
+                            {
+                                int quantity = depotView.DepotDrugUnits.Count(unit => unit.DrugType.DrugTypeId == type.DrugTypeId);
+                                <tr>
+                                    <td>@type.DrugTypeName</td>
+                                    <td>@quantity</td>
+                                    <td>@depotView.DrugTypeWeight(type) kg/unit</td>
+                                    <td>@(depotView.DrugTypeWeight(type) * quantity) kg</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Unfortunatelly, there are no drug units in this depot at the moment</p>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".depot .depot-units").hide();
+            $(".depot .depot-name").on("click", function() {
+                $(".depot .depot-units").slideUp(500);
+                $(this).parent().find(".depot-units").slideDown(500);
+            });
+        });
+    </script>
+}
+
+
